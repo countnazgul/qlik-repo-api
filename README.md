@@ -1,1 +1,175 @@
-qlik-repo-api
+## **UNDER DEVELOPMENT!**
+
+## Compatibility
+
+At the moment the module is compatible with `QSEoW` version `April 2019` (all patches)
+
+In the next iterations the methods will be adapted to the latter version. Each iteration will be compatible with specific version of `QSEoW`.
+
+## Objects
+
+- Generics - generic clients that are not bound to specific method/object. Aka raw methods. For them at least `url` and `body` (for `Post` and `Put` methods) must be provided
+
+  - repoClient - client that uses `/qrs` as prefix. The required `url` should be passed without the prefix
+    - Get
+    - Delete
+    - Patch
+    - Post
+    - Put
+  - genericClient - client that have no prefix. Used for downloading temporary files (for example)
+    - Get
+    - Delete
+    - Patch
+    - Post
+    - Put
+
+- `About`
+  - [x] aboutGet
+  - [x] aboutEnums
+  - [x] aboutOpenApi
+  - [x] aboutApiRelations
+  - [x] aboutApiDescription
+  - [x] aboutApiDefaults
+- `App`
+  - [x] appCopy
+  - [x] appExport
+  - [x] appGet
+  - [x] appGetFilter
+  - [x] appImport
+  - [x] appPublish
+  - [x] appRemove
+  - [x] appRemoveFilter
+  - [ ] appSwitch
+  - [x] appUpdate
+- `Certificate`
+  - [ ] certificateExport
+  - [ ] certificateDistributionPAth
+- `Content`
+  - [x] contentLibraryGet
+  - [x] contentLibraryGetFilter
+  - [ ] contentLibraryImport
+  - [ ] contentLibraryExport
+  - [x] contentLibraryCreate
+  - [x] contentLibraryRemove
+  - [x] contentLibraryUpdate
+- `Custom property`
+  - [x] customPropertyGet
+  - [x] customPropertyGetFilter
+  - [x] customPropertyCreate
+  - [x] customPropertyRemove
+  - [x] customPropertyUpdate
+- `Data connection`
+  - [ ] dataConnectionGet
+  - [ ] dataConnectionCreate
+  - [ ] dataConnectionRemove
+  - [ ] dataConnectionUpdate
+- `Engine`
+  - [ ] engineGet
+  - [ ] engineGetValid
+  - [ ] engineGetValid
+  - [ ] engineGetUpdate
+- `Extension`
+  - [x] extensionGet
+  - [x] extensionFilter
+  - [x] extensionImport
+  - [x] extensionRemove
+  - [x] extensionUpdate
+- `License`
+  - [ ] licenseAccessTypeInfoGet
+  - [ ] licenseAnalyzerAccessTypeGet
+  - [ ] licenseAnalyzerAccessTypeRemove
+  - [ ] licenseGet
+  - [ ] licenseSet
+  - [ ] licenseAudit
+  - [ ] licenseLoginAccessTypeGet
+  - [ ] licenseProfessionalAccessTypeGet
+  - [ ] licenseProfessionalAccessTypeRemove
+  - [ ] licenseUserAccessTypeGet
+  - [ ] licenseUserAccessTypeRemove
+  - [ ] licenseProfessionalAccessGroupGet
+  - [ ] licenseUserAccessGroupGet
+- `Node`
+  - [ ] nodeGet
+  - [ ] nodeCreate
+  - [ ] nodeRegister
+  - [ ] nodeRemove
+  - [ ] nodeUpdate
+- `Object`
+  - [ ] objectGet
+  - [ ] objectPublish
+  - [ ] objectRemove
+  - [ ] objectUnPublish
+  - [ ] objectUpdate
+- `Privileges`
+  - [ ] privilegesAssert
+  - [ ] privilegesGet
+- `Proxy`
+  - [ ] proxyCreate
+  - [ ] proxyGet
+  - [ ] proxyUpdate
+  - [ ] proxyMetaExport
+  - [ ] proxyVirtualAdd
+  - [ ] proxyVirtualCreate
+  - [ ] proxyVirtualGet
+  - [ ] proxyVirtualRemove
+  - [ ] proxyVirtualUpdate
+- `Rule`
+  - [ ] ruleAuditGet
+  - [x] ruleGet
+  - [x] ruleGetFilter
+  - [x] ruleCreate
+  - [x] ruleRemove
+  - [x] ruleUpdate
+  - [ ] ruleLicenseCreate
+- `Scheduler`
+  - [ ] schedulerGet
+  - [ ] schedulerUpdate
+- `Service cluster`
+  - [ ] serviceClusterGet
+  - [ ] serviceClusterUpdate
+- `Service status`
+  - [ ] serviceStatusGet
+- `Session`
+  - [ ] sessionGet
+  - [ ] sessionRemove
+- `Shared content`
+  - [ ] sharedContentRemove
+- `Stream`
+  - [x] streamGet
+  - [x] streamGetFilter
+  - [x] streamCreate
+  - [x] streamRemove
+  - [x] streamUpdate
+- `Table`
+  - [x] tableCreate
+- `Tag`
+  - [x] tagGet
+  - [x] tagGetFilter
+  - [x] tagCreate
+  - [x] tagRemove
+  - [x] tagRemoveFilter
+  - [x] tagUpdate
+- `Task`
+  - [ ] taskTriggerAdd
+  - [ ] taskReloadGet
+  - [ ] taskReloadUpdate
+  - [ ] taskGet
+  - [ ] taskCreate
+  - [ ] taskRemove
+  - [ ] taskStart
+  - [ ] taskExecutionWait
+  - [ ] taskScheduleCreate
+  - [ ] taskScheduleRemove
+  - [ ] taskScheduleGet
+- `User`
+  - [x] userGet
+  - [x] userGetFilter
+  - [x] userCreate
+  - [x] userRemove
+  - [x] userRemoveFilter
+  - [x] userUpdate
+- `User directory`
+  - [ ] userDirectoryGet
+  - [ ] userDirectoryCreate
+  - [ ] userDirectoryRemove
+  - [ ] userDirectoryUpdate
