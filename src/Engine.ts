@@ -212,11 +212,13 @@ export class Engine {
       engine.settings.sseLogVerbosity = arg.sseLogVerbosity;
     }
 
+    if (arg.modifiedByUserName)
+      engine.modifiedByUserName = arg.modifiedByUserName;
+
+    engine.modifiedDate = modifiedDateTime();
+
     return await this.repoClient
-      .Put(`engineservice/${arg.id}`, {
-        modifiedDate: modifiedDateTime(),
-        ...engine,
-      })
+      .Put(`engineservice/${arg.id}`, { ...engine })
       .then((res) => res.data as IEngine);
   }
 }

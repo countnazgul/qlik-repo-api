@@ -5,132 +5,15 @@ import {
   TSystemRuleContext,
 } from "../interfaces";
 
-export type TTimeZones =
-  | "Pacific/Honolulu"
-  | "America/Anchorage"
-  | "America/Los_Angeles"
-  | "America/Denver"
-  | "America/Mazatlan"
-  | "America/Phoenix"
-  | "America/Belize"
-  | "America/Chicago"
-  | "America/Mexico_City"
-  | "America/Regina"
-  | "America/Bogota"
-  | "America/Indianapolis"
-  | "America/New_York"
-  | "America/Caracas"
-  | "America/Halifax"
-  | "America/St_Johns"
-  | "America/Buenos_Aires"
-  | "America/Godthab"
-  | "America/Santiago"
-  | "America/Sao_Paulo"
-  | "Atlantic/South_Georgia"
-  | "Atlantic/Azores"
-  | "Atlantic/Cape_Verde"
-  | "UTC"
-  | "Atlantic/Reykjavik"
-  | "Africa/Casablanca"
-  | "Europe/Dublin"
-  | "Europe/Belgrade"
-  | "Europe/Paris"
-  | "Europe/Warsaw"
-  | "Africa/Cairo"
-  | "Africa/Harare"
-  | "Asia/Jerusalem"
-  | "Europe/Athens"
-  | "Europe/Bucharest"
-  | "Europe/Helsinki"
-  | "Africa/Nairobi"
-  | "Asia/Baghdad"
-  | "Asia/Kuwait"
-  | "Europe/Minsk"
-  | "Europe/Moscow"
-  | "Asia/Tehran"
-  | "Asia/Baku"
-  | "Asia/Muscat"
-  | "Asia/Kabul"
-  | "Asia/Karachi"
-  | "Asia/Yekaterinburg"
-  | "Asia/Calcutta"
-  | "Asia/Colombo"
-  | "Asia/Katmandu"
-  | "Asia/Almaty"
-  | "Asia/Dhaka"
-  | "Asia/Rangoon"
-  | "Asia/Bangkok"
-  | "Asia/Krasnoyarsk"
-  | "Asia/Hong_Kong"
-  | "Asia/Irkutsk"
-  | "Asia/Kuala_Lumpur"
-  | "Asia/Taipei"
-  | "Australia/Perth"
-  | "Asia/Seoul"
-  | "Asia/Tokyo"
-  | "Asia/Yakutsk"
-  | "Australia/Adelaide"
-  | "Australia/Darwin"
-  | "Asia/Vladivostok"
-  | "Australia/Brisbane"
-  | "Australia/Hobart"
-  | "Australia/Sydney"
-  | "Pacific/Guam"
-  | "Pacific/Noumea"
-  | "Pacific/Auckland"
-  | "Pacific/Fiji"
-  | "Pacific/Apia"
-  | "Pacific/Tongatapu";
-
-export type TDaysOfMonth =
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12
-  | 13
-  | 14
-  | 15
-  | 16
-  | 17
-  | 18
-  | 19
-  | 20
-  | 21
-  | 22
-  | 23
-  | 24
-  | 25
-  | 26
-  | 27
-  | 28
-  | 29
-  | 30
-  | 31;
-
-export type TDaysOfWeek =
-  | "Monday"
-  | "Tuesday"
-  | "Wednesday"
-  | "Thursday"
-  | "Friday"
-  | "Saturday"
-  | "Sunday";
-
-export type TRepeatOptions =
-  | "Once"
-  | "Minute"
-  | "Hourly"
-  | "Daily"
-  | "Weekly"
-  | "Monthly";
+import {
+  TRangeOf5,
+  TRangeOf100,
+  TRangeOf256,
+  TTimeZones,
+  TDaysOfMonth,
+  TDaysOfWeek,
+  TRepeatOptions,
+} from "./ranges";
 
 export interface IUserUpdate {
   id: string;
@@ -283,26 +166,27 @@ export interface ITableCreate {
 export interface IEngineUpdate {
   id: string;
   workingSetSizeMode?: "IgnoreMaxLimit" | "SoftMaxLimit" | "HardMaxLimit";
-  workingSetSizeLoPct?: number;
-  workingSetSizeHiPct?: number;
-  cpuThrottlePercentage?: number;
-  coresToAllocate?: number;
+  workingSetSizeLoPct?: TRangeOf100;
+  workingSetSizeHiPct?: TRangeOf100;
+  cpuThrottlePercentage?: TRangeOf100;
+  coresToAllocate?: TRangeOf256;
   allowDataLineage?: boolean;
   standardReload?: boolean;
   documentDirectory?: string;
   documentTimeout?: number;
   autosaveInterval?: number;
   genericUndoBufferMaxSize?: number;
-  auditActivityLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
-  auditSecurityLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
-  systemLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
-  externalServicesLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
-  qixPerformanceLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
-  serviceLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
-  httpTrafficLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
-  auditLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
-  trafficLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
-  sessionLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
-  performanceLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
-  sseLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
+  auditActivityLogVerbosity?: TRangeOf5;
+  auditSecurityLogVerbosity?: TRangeOf5;
+  systemLogVerbosity?: TRangeOf5;
+  externalServicesLogVerbosity?: TRangeOf5;
+  qixPerformanceLogVerbosity?: TRangeOf5;
+  serviceLogVerbosity?: TRangeOf5;
+  httpTrafficLogVerbosity?: TRangeOf5;
+  auditLogVerbosity?: TRangeOf5;
+  trafficLogVerbosity?: TRangeOf5;
+  sessionLogVerbosity?: TRangeOf5;
+  performanceLogVerbosity?: TRangeOf5;
+  sseLogVerbosity?: TRangeOf5;
+  modifiedByUserName?: string;
 }
