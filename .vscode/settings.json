@@ -4,8 +4,10 @@
         "Kuala",
         "Lumpur",
         "Paulo",
+        "autosave",
         "contentlibrary",
         "custompropertydefinition",
+        "engineservice",
         "excludeconnections",
         "includecustomproperties",
         "keepdata",
@@ -17,6 +19,7 @@
         "skipdata",
         "systemrule",
         "tempcontent",
+        "temporaryfilepath",
         "yxxx"
     ]
 }

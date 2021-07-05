@@ -279,3 +279,30 @@ export interface ITableCreate {
   sortColumn?: string;
   orderAscending?: boolean;
 }
+
+export interface IEngineUpdate {
+  id: string;
+  workingSetSizeMode?: "IgnoreMaxLimit" | "SoftMaxLimit" | "HardMaxLimit";
+  workingSetSizeLoPct?: number;
+  workingSetSizeHiPct?: number;
+  cpuThrottlePercentage?: number;
+  coresToAllocate?: number;
+  allowDataLineage?: boolean;
+  standardReload?: boolean;
+  documentDirectory?: string;
+  documentTimeout?: number;
+  autosaveInterval?: number;
+  genericUndoBufferMaxSize?: number;
+  auditActivityLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
+  auditSecurityLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
+  systemLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
+  externalServicesLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
+  qixPerformanceLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
+  serviceLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
+  httpTrafficLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
+  auditLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
+  trafficLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
+  sessionLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
+  performanceLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
+  sseLogVerbosity?: 0 | 1 | 2 | 3 | 4 | 5;
+}

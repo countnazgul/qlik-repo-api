@@ -4,6 +4,7 @@ import { App } from "./App";
 import { ContentLibrary } from "./ContentLibrary";
 import { CustomProperty } from "./CustomProperty";
 import { Extension } from "./Extension";
+import { Engine } from "./Engine";
 import { Stream } from "./Stream";
 import { SystemRule } from "./SystemRule";
 import { Table } from "./Table";
@@ -54,6 +55,11 @@ export class QlikRepoApi implements App, Stream {
   extensionUpdate = Extension.prototype.extensionUpdate;
   extensionImport = Extension.prototype.extensionImport;
   extensionExport = Extension.prototype.extensionExport;
+
+  engineGet = Engine.prototype.engineGet;
+  engineGetAll = Engine.prototype.engineGetAll;
+  engineGetFilter = Engine.prototype.engineGetFilter;
+  engineUpdate = Engine.prototype.engineUpdate;
 
   streamGet = Stream.prototype.streamGet;
   streamGetFilter = Stream.prototype.streamGetFilter;

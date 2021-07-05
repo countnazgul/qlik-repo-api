@@ -43,7 +43,7 @@ In the next iterations the methods will be adapted to the latter version. Each i
   - [x] appUpdate
 - `Certificate`
   - [ ] certificateExport
-  - [ ] certificateDistributionPAth
+  - [ ] certificateDistributionPath
 - `Content`
   - [x] contentLibraryGet
   - [x] contentLibraryGetFilter
@@ -64,10 +64,10 @@ In the next iterations the methods will be adapted to the latter version. Each i
   - [ ] dataConnectionRemove
   - [ ] dataConnectionUpdate
 - `Engine`
-  - [ ] engineGet
-  - [ ] engineGetValid
-  - [ ] engineGetValid
-  - [ ] engineGetUpdate
+  - [x] engineGet
+  - [x] engineGetAll
+  - [x] engineGetFilter
+  - [x] engineGetUpdate
 - `Extension`
   - [x] extensionGet
   - [x] extensionFilter
