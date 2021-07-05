@@ -49,6 +49,9 @@ export class Extension {
   ): Promise<IExtension> {
     let extension = await this.extensionGet(arg.id);
 
+    if (arg.modifiedByUserName)
+      extension.modifiedByUserName = arg.modifiedByUserName;
+
     let updateCommon = new UpdateCommonProperties(this, extension, arg);
     extension = await updateCommon.updateAll();
 

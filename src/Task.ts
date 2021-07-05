@@ -7,10 +7,9 @@ import {
   IStreamUpdate,
   ITaskCreateTriggerComposite,
   ITaskCreateTriggerSchema,
-  TRepeatOptions,
-  TDaysOfMonth,
-  TDaysOfWeek,
 } from "./interfaces/argument.interface";
+
+import { TRepeatOptions, TDaysOfMonth, TDaysOfWeek } from "./interfaces/ranges";
 
 export class Task {
   constructor() {}

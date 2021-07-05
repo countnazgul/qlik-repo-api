@@ -80,14 +80,20 @@ export class Tag {
   public async tagUpdate(
     this: QlikRepoApi,
     id: string,
-    name: string
+    name: string,
+    modifiedByUserName?: string
   ): Promise<ITag> {
     if (!id) throw new Error(`"id" is required`);
     isGUIDError(id);
     if (!name) throw new Error(`"name" is required`);
 
+    let tag = await this.tagGet(id);
+    tag.name = name;
+    tag.modifiedDate = modifiedDateTime();
+    if (modifiedByUserName) tag.modifiedByUserName = modifiedByUserName;
+
     return await this.repoClient
-      .Put(`tag/${id}`, { name, modifiedDate: modifiedDateTime() })
+      .Put(`tag/${id}`, { ...tag })
       .then((res) => res.data as ITag);
   }
 }

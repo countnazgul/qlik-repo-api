@@ -49,6 +49,8 @@ export class Stream {
     let stream = await this.streamGet(arg.id);
 
     if (arg.name) stream.name = arg.name;
+    if (arg.modifiedByUserName)
+      stream.modifiedByUserName = arg.modifiedByUserName;
 
     let updateCommon = new UpdateCommonProperties(this, stream, arg);
     stream = await updateCommon.updateAll();

@@ -144,6 +144,7 @@ export class App {
 
     if (arg.name) app.name = arg.name;
     if (arg.description) app.description = arg.description;
+    if (arg.modifiedByUserName) app.modifiedByUserName = arg.modifiedByUserName;
 
     let updateCommon = new UpdateCommonProperties(this, app, arg);
     app = await updateCommon.updateAll();

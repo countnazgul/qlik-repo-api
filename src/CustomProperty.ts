@@ -4,7 +4,6 @@ import {
   IHttpStatus,
   ICustomProperty,
   IHttpReturnRemove,
-  TCustomPropObjectTypes,
   ICustomPropertyCondensed,
 } from "./interfaces";
 
@@ -77,6 +76,9 @@ export class CustomProperty {
     if (arg.choiceValues) customProperty.choiceValues = arg.choiceValues;
     if (arg.objectTypes) customProperty.objectTypes = arg.objectTypes;
     if (arg.valueType) customProperty.valueType = arg.valueType;
+    if (arg.modifiedByUserName)
+      customProperty.modifiedByUserName = arg.modifiedByUserName;
+
     customProperty.modifiedDate = modifiedDateTime();
 
     return await this.repoClient
