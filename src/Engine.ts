@@ -43,14 +43,23 @@ export class Engine {
 
     let engine = await this.engineGet(arg.id);
 
-    if (arg.workingSetSizeLoPct)
+    if (arg.workingSetSizeLoPct) {
+      if (arg.workingSetSizeLoPct < 0 || arg.workingSetSizeLoPct > 100)
+        throw new Error("workingSetSizeLoPct must be between 0 and 100");
       engine.settings.workingSetSizeLoPct = arg.workingSetSizeLoPct;
+    }
 
-    if (arg.workingSetSizeHiPct)
+    if (arg.workingSetSizeHiPct) {
+      if (arg.workingSetSizeHiPct < 0 || arg.workingSetSizeHiPct > 100)
+        throw new Error("workingSetSizeHiPct must be between 0 and 100");
       engine.settings.workingSetSizeHiPct = arg.workingSetSizeHiPct;
+    }
 
-    if (arg.cpuThrottlePercentage)
+    if (arg.cpuThrottlePercentage) {
+      if (arg.cpuThrottlePercentage < 0 || arg.cpuThrottlePercentage > 100)
+        throw new Error("cpuThrottlePercentage must be between 0 and 100");
       engine.settings.cpuThrottlePercentage = arg.cpuThrottlePercentage;
+    }
 
     if (arg.workingSetSizeMode) {
       if (
@@ -73,6 +82,9 @@ export class Engine {
     }
 
     if (arg.coresToAllocate) {
+      if (arg.coresToAllocate < 0 || arg.coresToAllocate > 256)
+        throw new Error("coresToAllocate must be between 0 and 256");
+
       let mask = [0, 0, 0, 0, 0, 0, 0, 0];
       let bin = "".padEnd(arg.coresToAllocate, "1").padStart(256, "0");
 
@@ -114,46 +126,97 @@ export class Engine {
     if (arg.genericUndoBufferMaxSize)
       engine.settings.genericUndoBufferMaxSize = arg.genericUndoBufferMaxSize;
 
-    if (arg.auditActivityLogVerbosity)
+    if (arg.auditActivityLogVerbosity) {
+      if (
+        arg.auditActivityLogVerbosity < 0 ||
+        arg.auditActivityLogVerbosity > 5
+      )
+        throw new Error("auditActivityLogVerbosity must be between 0 and 5");
       engine.settings.auditActivityLogVerbosity = arg.auditActivityLogVerbosity;
+    }
 
-    if (arg.auditSecurityLogVerbosity)
+    if (arg.auditSecurityLogVerbosity) {
+      if (
+        arg.auditSecurityLogVerbosity < 0 ||
+        arg.auditSecurityLogVerbosity > 5
+      )
+        throw new Error("auditSecurityLogVerbosity must be between 0 and 5");
       engine.settings.auditSecurityLogVerbosity = arg.auditSecurityLogVerbosity;
+    }
 
-    if (arg.systemLogVerbosity)
+    if (arg.systemLogVerbosity) {
+      if (arg.systemLogVerbosity < 0 || arg.systemLogVerbosity > 5)
+        throw new Error("systemLogVerbosity must be between 0 and 5");
       engine.settings.systemLogVerbosity = arg.systemLogVerbosity;
+    }
 
-    if (arg.externalServicesLogVerbosity)
+    if (arg.externalServicesLogVerbosity) {
+      if (
+        arg.externalServicesLogVerbosity < 0 ||
+        arg.externalServicesLogVerbosity > 5
+      )
+        throw new Error("externalServicesLogVerbosity must be between 0 and 5");
       engine.settings.externalServicesLogVerbosity =
         arg.externalServicesLogVerbosity;
+    }
 
-    if (arg.qixPerformanceLogVerbosity)
+    if (arg.qixPerformanceLogVerbosity) {
+      if (
+        arg.qixPerformanceLogVerbosity < 0 ||
+        arg.qixPerformanceLogVerbosity > 5
+      )
+        throw new Error("qixPerformanceLogVerbosity must be between 0 and 5");
       engine.settings.qixPerformanceLogVerbosity =
         arg.qixPerformanceLogVerbosity;
+    }
 
-    if (arg.serviceLogVerbosity)
+    if (arg.serviceLogVerbosity) {
+      if (arg.serviceLogVerbosity < 0 || arg.serviceLogVerbosity > 5)
+        throw new Error("serviceLogVerbosity must be between 0 and 5");
       engine.settings.serviceLogVerbosity = arg.serviceLogVerbosity;
+    }
 
-    if (arg.httpTrafficLogVerbosity)
+    if (arg.httpTrafficLogVerbosity) {
+      if (arg.httpTrafficLogVerbosity < 0 || arg.httpTrafficLogVerbosity > 5)
+        throw new Error("httpTrafficLogVerbosity must be between 0 and 5");
       engine.settings.httpTrafficLogVerbosity = arg.httpTrafficLogVerbosity;
+    }
 
-    if (arg.auditLogVerbosity)
+    if (arg.auditLogVerbosity) {
+      if (arg.auditLogVerbosity < 0 || arg.auditLogVerbosity > 5)
+        throw new Error("auditLogVerbosity must be between 0 and 5");
       engine.settings.auditLogVerbosity = arg.auditLogVerbosity;
+    }
 
-    if (arg.trafficLogVerbosity)
+    if (arg.trafficLogVerbosity) {
+      if (arg.trafficLogVerbosity < 0 || arg.trafficLogVerbosity > 5)
+        throw new Error("trafficLogVerbosity must be between 0 and 5");
       engine.settings.trafficLogVerbosity = arg.trafficLogVerbosity;
+    }
 
-    if (arg.sessionLogVerbosity)
+    if (arg.sessionLogVerbosity) {
+      if (arg.sessionLogVerbosity < 0 || arg.sessionLogVerbosity > 5)
+        throw new Error("sessionLogVerbosity must be between 0 and 5");
       engine.settings.sessionLogVerbosity = arg.sessionLogVerbosity;
+    }
 
-    if (arg.performanceLogVerbosity)
+    if (arg.performanceLogVerbosity) {
+      if (arg.performanceLogVerbosity < 0 || arg.performanceLogVerbosity > 5)
+        throw new Error("performanceLogVerbosity must be between 0 and 5");
       engine.settings.performanceLogVerbosity = arg.performanceLogVerbosity;
+    }
 
-    if (arg.sseLogVerbosity)
+    if (arg.sseLogVerbosity) {
+      if (arg.sseLogVerbosity < 0 || arg.sseLogVerbosity > 5)
+        throw new Error("auditActivityLogVerbosity must be between 0 and 5");
       engine.settings.sseLogVerbosity = arg.sseLogVerbosity;
+    }
 
     return await this.repoClient
-      .Put(`engineservice/${arg.id}`, { modifiedDate: modifiedDateTime() })
+      .Put(`engineservice/${arg.id}`, {
+        modifiedDate: modifiedDateTime(),
+        ...engine,
+      })
       .then((res) => res.data as IEngine);
   }
 }
