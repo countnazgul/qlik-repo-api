@@ -6,6 +6,12 @@ At the moment the module is compatible with `QSEoW` version `April 2019` (all pa
 
 In the next iterations the methods will be adapted to the latter version. Each iteration will be compatible with specific version of `QSEoW`.
 
+---
+
+**NOT AFFILIATED WITH QLIK**
+
+---
+
 ## Objects
 
 - Generics - generic clients that are not bound to specific method/object. Aka raw methods. For them at least `url` and `body` (for `Post` and `Put` methods) must be provided
