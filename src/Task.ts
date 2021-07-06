@@ -14,37 +14,57 @@ import { TRepeatOptions, TDaysOfMonth, TDaysOfWeek } from "./interfaces/ranges";
 export class Task {
   constructor() {}
 
-  // public async getTask(this: QlikRepoApi, id: string): Promise<any> {
-  //   return await this.repoClient
-  //     .Get(`task/${id}`)
-  //     .then((res) => res.data as any);
-  // }
+  public async taskGetAll(this: QlikRepoApi): Promise<any> {
+    return await this.repoClient
+      .Get(`task/full`)
+      .then((res) => res.data as any);
+  }
 
-  public async getTaskReload(this: QlikRepoApi, id: string): Promise<ITask> {
+  public async taskReloadGetAll(this: QlikRepoApi): Promise<any> {
+    return await this.taskGetFilter("taskType eq 0");
+  }
+
+  public async taskExternalGetAll(this: QlikRepoApi): Promise<any> {
+    return await this.taskGetFilter("taskType eq 2");
+  }
+
+  public async taskReloadGet(this: QlikRepoApi, id: string): Promise<ITask> {
     return await this.repoClient
       .Get(`reloadtask/${id}`)
       .then((res) => res.data as ITask);
   }
 
-  public async getTaskFilter(
+  public async taskGetFilter(
     this: QlikRepoApi,
     filter: string
   ): Promise<ITask[]> {
     return await this.repoClient
-      .Get(`task?filter=(${encodeURIComponent(filter)})`)
+      .Get(`task/full?filter=(${encodeURIComponent(filter)})`)
       .then((res) => res.data as ITask[]);
   }
 
-  public async getTaskReloadFilter(
+  public async taskReloadGetFilter(
     this: QlikRepoApi,
     filter: string
   ): Promise<ITask[]> {
     return await this.repoClient
-      .Get(`reloadtask?filter=(${encodeURIComponent(filter)})`)
+      .Get(`reloadtask/full?filter=(${encodeURIComponent(filter)})`)
       .then((res) => res.data as ITask[]);
   }
 
-  public async removeTaskReload(
+  public async taskReloadCount(
+    this: QlikRepoApi,
+    filter?: string
+  ): Promise<number> {
+    let url: string = `reloadtask/count`;
+    if (filter) url += `${url}?filter=(${encodeURIComponent(filter)})`;
+
+    return await this.repoClient
+      .Get(`${url}`)
+      .then((res) => res.data.value as number);
+  }
+
+  public async taskReloadRemove(
     this: QlikRepoApi,
     id: string
   ): Promise<IHttpStatus> {
@@ -53,7 +73,16 @@ export class Task {
       .then((res) => res.status as IHttpStatus);
   }
 
-  public async createTask(this: QlikRepoApi, arg: ITaskCreate): Promise<ITask> {
+  public async taskExternalRemove(
+    this: QlikRepoApi,
+    id: string
+  ): Promise<IHttpStatus> {
+    return await this.repoClient
+      .Delete(`externalprogramtask/${id}`)
+      .then((res) => res.status as IHttpStatus);
+  }
+
+  public async taskCreate(this: QlikRepoApi, arg: ITaskCreate): Promise<ITask> {
     let reloadTask = {
       schemaEvents: [],
       compositeEvents: [],
@@ -85,7 +114,7 @@ export class Task {
       .then((res) => res.data as ITask);
   }
 
-  public async updateTask(
+  public async taskUpdate(
     this: QlikRepoApi,
     arg: IStreamUpdate
   ): Promise<ITask> {
@@ -101,7 +130,7 @@ export class Task {
       .then((res) => res.data as ITask);
   }
 
-  public async startTask(
+  public async taskStart(
     this: QlikRepoApi,
     id: string,
     wait: boolean = false
@@ -114,7 +143,7 @@ export class Task {
       .then((res) => res.status as IHttpStatus);
   }
 
-  public async startTaskByName(
+  public async taskStartByName(
     this: QlikRepoApi,
     taskName: string,
     wait: boolean = false
@@ -128,7 +157,7 @@ export class Task {
       .then((res) => res.status as IHttpStatus);
   }
 
-  public async waitTaskExecution(
+  public async taskWaitExecution(
     this: QlikRepoApi,
     taskId: string,
     executionId?: string
@@ -137,7 +166,7 @@ export class Task {
     let resultId: string;
 
     if (!executionId) {
-      resultId = await this.getTaskFilter(`id eq ${taskId}`).then((t) => {
+      resultId = await this.taskGetFilter(`id eq ${taskId}`).then((t) => {
         return t[0].operational.lastExecutionResult.id;
       });
     }
@@ -164,7 +193,7 @@ export class Task {
     return result;
   }
 
-  public async removeTaskSchedule(
+  public async taskScheduleRemove(
     this: QlikRepoApi,
     id: string
   ): Promise<IHttpStatus> {
@@ -173,7 +202,7 @@ export class Task {
       .then((res) => res.status as IHttpStatus);
   }
 
-  public async getTaskSchedule(
+  public async taskScheduleGet(
     this: QlikRepoApi,
     name: string,
     reloadTaskId: string
@@ -186,7 +215,7 @@ export class Task {
       .then((res) => res.status as IHttpStatus);
   }
 
-  public async createTaskTriggerComposite(
+  public async taskTriggerCreateComposite(
     this: QlikRepoApi,
     arg: ITaskCreateTriggerComposite
   ): Promise<IHttpStatus> {
@@ -229,7 +258,7 @@ export class Task {
       });
   }
 
-  public async createTaskTriggerSchema(
+  public async taskTriggerCreateSchema(
     this: QlikRepoApi,
     arg: ITaskCreateTriggerSchema
   ) {
@@ -242,7 +271,7 @@ export class Task {
       arg.daysOfMonth || 1
     );
 
-    const reloadTaskDetails = await this.getTaskFilter(
+    const reloadTaskDetails = await this.taskGetFilter(
       `id eq ${arg.reloadTaskId}`
     ).then((t) => t[0]);
 
@@ -269,6 +298,20 @@ export class Task {
     return await this.repoClient
       .Post(`schemaevent`, { ...createObj })
       .then((res) => res.status as IHttpStatus);
+  }
+
+  public async taskScriptLogGet(
+    this: QlikRepoApi,
+    reloadTaskId: string
+  ): Promise<boolean> {
+    return true;
+  }
+
+  public async taskScriptLogFileGet(
+    this: QlikRepoApi,
+    reloadTaskId: string
+  ): Promise<boolean> {
+    return true;
   }
 }
 
@@ -326,3 +369,6 @@ function getWeekDayNumber(daysOfWeek: TDaysOfWeek): number {
   if (daysOfWeek == "Friday") return 5;
   if (daysOfWeek == "Saturday") return 6;
 }
+
+// get /reloadtask/{reloadtaskid}/scriptlog
+// get /reloadtask/{reloadtaskid}/scriptlogfile
