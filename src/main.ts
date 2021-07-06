@@ -83,20 +83,24 @@ export class QlikRepoApi implements App, Stream {
 
   tableCreate = Table.prototype.tableCreate;
 
-  // getTask = Task.prototype.getTask;
-  getTaskReload = Task.prototype.getTaskReload;
-  getTaskFilter = Task.prototype.getTaskFilter;
-  getTaskReloadFilter = Task.prototype.getTaskReloadFilter;
-  createTask = Task.prototype.createTask;
-  removeTaskReload = Task.prototype.removeTaskReload;
-  updateTask = Task.prototype.updateTask;
-  startTask = Task.prototype.startTask;
-  startTaskByName = Task.prototype.startTaskByName;
-  waitTaskExecution = Task.prototype.waitTaskExecution;
-  removeTaskSchedule = Task.prototype.removeTaskSchedule;
-  getTaskSchedule = Task.prototype.getTaskSchedule;
-  createTaskTriggerComposite = Task.prototype.createTaskTriggerComposite;
-  createTaskTriggerSchema = Task.prototype.createTaskTriggerSchema;
+  taskGetAll = Task.prototype.taskGetAll;
+  taskReloadGetAll = Task.prototype.taskReloadGetAll;
+  taskExternalGetAll = Task.prototype.taskExternalGetAll;
+  taskReloadGet = Task.prototype.taskReloadGet;
+  taskGetFilter = Task.prototype.taskGetFilter;
+  taskReloadCount = Task.prototype.taskReloadCount;
+  taskReloadGetFilter = Task.prototype.taskReloadGetFilter;
+  taskCreate = Task.prototype.taskCreate;
+  taskReloadRemove = Task.prototype.taskReloadRemove;
+  taskExternalRemove = Task.prototype.taskExternalRemove;
+  taskUpdate = Task.prototype.taskUpdate;
+  taskStart = Task.prototype.taskStart;
+  taskStartByName = Task.prototype.taskStartByName;
+  taskWaitExecution = Task.prototype.taskWaitExecution;
+  taskScheduleRemove = Task.prototype.taskScheduleRemove;
+  taskScheduleGet = Task.prototype.taskScheduleGet;
+  taskTriggerCreateComposite = Task.prototype.taskTriggerCreateComposite;
+  taskTriggerCreateSchema = Task.prototype.taskTriggerCreateSchema;
 
   userGet = User.prototype.userGet;
   userGetFilter = User.prototype.userGetFilter;
