@@ -3,4 +3,3 @@ dist/
 out/
 .env
 test/playground.spec.ts
-documentation/

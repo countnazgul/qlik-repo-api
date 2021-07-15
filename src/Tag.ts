@@ -14,7 +14,7 @@ export class Tag {
   constructor() {}
 
   public async tagGet(this: QlikRepoApi, id: string): Promise<ITag> {
-    if (!id) throw new Error(`"id" is required`);
+    if (!id) throw new Error(`tagGet: "id" parameter is required`);
     isGUIDError(id);
 
     return await this.repoClient
@@ -28,15 +28,13 @@ export class Tag {
 
   public async tagGetFilter(
     this: QlikRepoApi,
-    filter: string,
-    full = true
+    filter: string
   ): Promise<ITagCondensed[]> {
-    if (!filter) throw new Error(`"Filter" is required`);
-    let baseUrl = `tag`;
-    if (full) baseUrl += `/full`;
+    if (!filter)
+      throw new Error(`tagGetFilter: "filter" parameter is required`);
 
     return await this.repoClient
-      .Get(`${baseUrl}?filter=(${encodeURIComponent(filter)})`)
+      .Get(`tag/full?filter=(${encodeURIComponent(filter)})`)
       .then((res) => res.data as ITag[]);
   }
 
@@ -51,7 +49,7 @@ export class Tag {
     this: QlikRepoApi,
     id: string
   ): Promise<IHttpReturnRemove> {
-    if (!id) throw new Error(`"id" is required`);
+    if (!id) throw new Error(`tagRemove: "id" parameter is required`);
     isGUIDError(id);
 
     return await this.repoClient.Delete(`tag/${id}`).then((res) => {
@@ -63,7 +61,8 @@ export class Tag {
     this: QlikRepoApi,
     filter: string
   ): Promise<IRemoveFilter[]> {
-    if (!filter) throw new Error(`"Filter" is required`);
+    if (!filter)
+      throw new Error(`tagRemoveFilter: "filter" parameter is required`);
 
     const tags = await this.tagGetFilter(filter);
     return await Promise.all<IRemoveFilter>(
@@ -83,9 +82,9 @@ export class Tag {
     name: string,
     modifiedByUserName?: string
   ): Promise<ITag> {
-    if (!id) throw new Error(`"id" is required`);
+    if (!id) throw new Error(`tagUpdate: "id" parameter is required`);
     isGUIDError(id);
-    if (!name) throw new Error(`"name" is required`);
+    if (!name) throw new Error(`tagUpdate: "name" parameter is required`);
 
     let tag = await this.tagGet(id);
     tag.name = name;

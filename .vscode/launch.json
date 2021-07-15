@@ -5,13 +5,13 @@
             "type": "node",
             "request": "launch",
             "name": "Build Project",
-            "program": "${workspaceFolder}\\tests\\playground.spec.ts",
+            "program": "${workspaceFolder}\\test\\playground.spec.ts",
             "preLaunchTask": "npm: build",
             "sourceMaps": true,
             "smartStep": true,
             "internalConsoleOptions": "openOnSessionStart",
             "outFiles": [
-                "${workspaceFolder}/out/**/*.js"
+                "${workspaceFolder}/dist/**/*.js"
             ]
         }
     ]

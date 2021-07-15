@@ -12,6 +12,80 @@ import { Tag } from "./Tag";
 import { Task } from "./Task";
 import { User } from "./User";
 
+import {
+  IAbout,
+  IApp,
+  IRemoveFilter,
+  IContentLibrary,
+  ICustomProperty,
+  IEngine,
+  IExtension,
+  ISystemRule,
+  IHttpReturn,
+  IHttpReturnRemove,
+  IStream,
+  ITag,
+  ITask,
+  ITaskExecutionResult,
+  IUser,
+} from "./interfaces";
+export {
+  IAbout,
+  IApp,
+  IRemoveFilter,
+  IContentLibrary,
+  ICustomProperty,
+  IEngine,
+  IExtension,
+  ISystemRule,
+  IHttpReturn,
+  IHttpReturnRemove,
+  IStream,
+  ITag,
+  ITask,
+  ITaskExecutionResult,
+  IUser,
+};
+
+import {
+  IExtensionUpdate,
+  IUserUpdate,
+  IUserCreate,
+  IStreamUpdate,
+  ITaskCreateTriggerSchema,
+  ITaskCreateTriggerComposite,
+  ITaskCreate,
+  ITableCreate,
+  IStreamCreate,
+  ISystemRuleUpdate,
+  ISystemRuleCreate,
+  IExtensionImport,
+  IEngineUpdate,
+  ICustomPropertyUpdate,
+  ICustomPropertyCreate,
+  IContentLibraryUpdate,
+  IAppUpdate,
+} from "./interfaces/argument.interface";
+export {
+  IExtensionUpdate,
+  IUserUpdate,
+  IUserCreate,
+  IStreamUpdate,
+  ITaskCreateTriggerSchema,
+  ITaskCreateTriggerComposite,
+  ITaskCreate,
+  ITableCreate,
+  IStreamCreate,
+  ISystemRuleUpdate,
+  ISystemRuleCreate,
+  IExtensionImport,
+  IEngineUpdate,
+  ICustomPropertyUpdate,
+  ICustomPropertyCreate,
+  IContentLibraryUpdate,
+  IAppUpdate,
+};
+
 export class QlikRepoApi implements App, Stream {
   public repoClient: QlikRepositoryClient;
   public genericClient: QlikGenericRestClient;
